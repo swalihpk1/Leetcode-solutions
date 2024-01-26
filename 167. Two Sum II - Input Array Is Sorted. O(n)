@@ -1,0 +1,12 @@
+var twoSum = function (numbers, target) {
+    let set = new Set();
+    for (let i = 0; i < numbers.length; i++) {
+        let num = numbers[i];
+        let match = target - num;
+        if (set.has(match)) {
+            return [i + 1, numbers.indexOf(match) + 1].sort((a, b) => a - b);
+        } else {
+            set.add(num);
+        }
+    }
+};

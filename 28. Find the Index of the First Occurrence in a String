@@ -1,0 +1,15 @@
+var strStr = function (haystack, needle) {
+    
+    for (let i = 0; i < haystack.length; i++) {
+        let word = '';
+        if (haystack[i] === needle[0]) {
+            for (let j = 0; j < needle.length; j++) {
+                word += haystack[i + j];
+            }
+           if(word === needle){
+               return i
+           }
+        }
+    }
+    return -1;
+};

@@ -1,0 +1,14 @@
+var differenceOfSums = function (n, m) {
+    let notDivSum = 0;
+    let divSum = 0;
+    for (let i = 1; i <= n; i++) {
+        if(i%m===0){
+          notDivSum += i;
+        }else{
+            divSum +=i
+        }
+    }
+
+    return  divSum - notDivSum;
+
+};

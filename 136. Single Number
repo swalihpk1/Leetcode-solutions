@@ -1,0 +1,9 @@
+var singleNumber = function (nums) {
+    let sortArr = nums.sort();
+    for(let i=0;i<nums.length;i++){
+        if(sortArr[i]!==sortArr[i+1]){
+            return sortArr[i]
+        }
+        i++
+    }
+}

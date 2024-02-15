@@ -1,0 +1,21 @@
+var isValid = function (s) {
+    let stack = [];
+    let bracketMap = {
+        '{': '}',
+        '[': ']',
+        '(': ')'
+    };
+    for (let char of s) {
+        if (char === '{' || char === '[' || char === '(') {
+            stack.push(char);
+        }else{
+            const top = stack.pop();
+            if(bracketMap[top] !== char){
+                return false;
+            }
+        }
+
+    }
+    console.log(stack.length)
+    return stack.length == 0;
+};

@@ -1,0 +1,13 @@
+var areOccurrencesEqual = function (s) {
+    let freequency = {};
+    for (let char of s) {
+        freequency[char] = (freequency[char] || 0) + 1;
+    }
+    let res = Object.values(freequency);
+    for (let i = 1; i < res.length; i++) {
+        if (res[i] !== res[0]) {
+            return false;
+        }
+    }
+     return true;
+};

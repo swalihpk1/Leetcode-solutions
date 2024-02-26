@@ -1,0 +1,10 @@
+var maximumWealth = function(accounts) {
+    let result = [];
+    let sum;
+    for(let val of accounts){
+         sum  = val.reduce((acc,curr)=>acc + curr,0);
+        result.push(sum);
+    }
+
+    return Math.max(...result)
+};

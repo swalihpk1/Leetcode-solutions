@@ -1,0 +1,23 @@
+var isPalindrome = function(head) {
+    if (!head || !head.next) {
+        return true;
+    }
+
+    let values = [];
+    let curr = head;
+
+ 
+    while (curr !== null) {
+        values.push(curr.val);
+        curr = curr.next;
+    }
+
+  
+    for (let i = 0, j = values.length - 1; i < j; i++, j--) {
+        if (values[i] !== values[j]) {
+            return false; 
+        }
+    }
+
+    return true; 
+};

@@ -1,0 +1,32 @@
+var leftRightDifference = function (nums) {
+    let leftArr = [];
+    let rightArr = [];
+    for (let i = 0; i < nums.length; i++) {
+        leftArr[0] = 0;
+        let j = nums.length - 1;
+        let rightSum = 0
+        while (j > i) {
+            rightSum += nums[j]
+            j--;
+        }
+        rightArr.push(rightSum);
+
+        if (i !== 0) {
+            let leftSum = 0;
+            let k = 0;
+            while (k < i) {
+                leftSum += nums[k]
+                k++;
+            }
+            leftArr.push(leftSum);
+        }
+    }
+
+    let answer = [];
+    for (let i = 0; i < nums.length; i++) {
+        answer.push(Math.abs(rightArr[i]-leftArr[i]));
+    }
+
+    return answer;
+
+};

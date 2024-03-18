@@ -1,0 +1,13 @@
+var postorderTraversal = function (root) {
+    let result = [];
+    postOrder(root, result)
+    return result;
+};
+
+function postOrder(root, result) {
+    if (root) {
+        postOrder(root.left, result)
+        postOrder(root.right, result)
+        result.push(root.val)
+    }
+}

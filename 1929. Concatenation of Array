@@ -1,0 +1,5 @@
+var getConcatenation = function(nums) {
+    let ans = nums;
+    ans.map(val => ans.push(val));
+    return ans;
+};

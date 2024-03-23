@@ -1,0 +1,11 @@
+var removeAnagrams = function (words) {
+    let ans = [];
+    for (let i = 1; i < words.length;) {
+        if (words[i].split('').sort().join() === words[i - 1].split('').sort().join()) {
+            words.splice(i, 1)
+        } else {
+            i++
+        }
+    }
+    return words
+};

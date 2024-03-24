@@ -1,0 +1,4 @@
+var intersection = function(nums1, nums2) {
+    let result = nums1.filter(nums => nums2.includes(nums))
+    return Array.from(new Set(result))
+};

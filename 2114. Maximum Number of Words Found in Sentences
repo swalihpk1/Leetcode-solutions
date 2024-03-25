@@ -1,0 +1,8 @@
+var mostWordsFound = function (sentences) {
+    let result = []
+    for (let sentence of sentences) {
+        const count = sentence.split('').reduce((count, char) => char === ' ' ? count + 1 : count, 0);
+        result.push(count);
+    }
+    return Math.max(...result)+1;
+};

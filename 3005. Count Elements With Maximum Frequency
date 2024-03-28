@@ -1,0 +1,15 @@
+var maxFrequencyElements = function (nums) {
+    let frequency = {};
+    let maxValue = 0;
+    for (let num of nums) {
+        frequency[num] = (frequency[num] || 0) + 1;
+        maxValue = Math.max(maxValue, frequency[num]);
+    }
+    let result=0;
+    for(let freeq in frequency){
+        if(frequency[freeq] == maxValue){
+            result = result+maxValue;
+        }
+    }
+    return result
+}

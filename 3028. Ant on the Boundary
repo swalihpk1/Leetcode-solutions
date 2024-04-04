@@ -1,0 +1,10 @@
+var returnToBoundaryCount = function(nums) {
+     let currPosition = 0, count = 0;
+    nums.map(num => {
+        currPosition += num;
+        if (currPosition === 0) {
+            count++;
+        }
+    });
+    return count;
+};

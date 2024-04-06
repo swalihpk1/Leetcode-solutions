@@ -1,0 +1,21 @@
+ar calPoints = function (operations) {
+    let result = [];
+    for (let i = 0; i < operations.length; i++) {
+        switch (operations[i]) {
+            case 'D':
+                result.push(result[result.length - 1] * 2);
+                break;
+            case 'C':
+                result.pop();
+                break;
+            case '+':
+                result.push(+result[result.length - 1] + +result[result.length - 2]);
+                break;
+            default:
+                result.push(operations[i])
+                break;
+        }
+    }
+
+    return result.reduce((acc, str) => acc + +str, 0)
+};

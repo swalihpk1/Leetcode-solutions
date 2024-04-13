@@ -1,0 +1,9 @@
+var minOperations = function (nums, k) {
+    let count = 0;
+    for (let val of nums) {
+        if (val < k) {
+            count++
+        }
+    }
+    return count
+};

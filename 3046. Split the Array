@@ -1,0 +1,13 @@
+var isPossibleToSplit = function (nums) {
+    let arr = new Array(100).fill(0);
+
+    for (let i = 0; i < nums.length; i++) {
+        arr[nums[i] - 1]++;
+        if (arr[nums[i] - 1] > 2) {
+            return false
+        }
+    }
+    return true
+
+    console.log(arr)
+};

@@ -1,0 +1,37 @@
+var insert = function (intervals, newInterval) {
+    let start, end;
+    let result = [];
+    let inserted = false; 
+
+    for (let arr of intervals) {
+        start = arr[0];
+        end = arr[1];
+
+        if (inserted) {
+            result.push(arr);
+        } else {
+          
+            if (newInterval[1] < start) {
+                result.push(newInterval); 
+                result.push(arr); 
+                inserted = true; 
+            }
+          
+            else if (newInterval[0] > end) {
+                result.push(arr);
+            } 
+         
+            else {
+                newInterval[0] = Math.min(newInterval[0], start); 
+                newInterval[1] = Math.max(newInterval[1], end);
+            }
+        }
+    }
+
+
+    if (!inserted) {
+        result.push(newInterval);
+    }
+
+    return result;
+};

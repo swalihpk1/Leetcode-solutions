@@ -1,0 +1,21 @@
+var maxSubarraySumCircular = function (nums) {
+    let currMax = 0
+    let maxSum = nums[0]
+    let total = 0;
+    let currMin = 0
+    let minSum = nums[0]
+
+    for (let num of nums) {
+        currMax = Math.max(num, currMax + num);
+        maxSum = Math.max(currMax, maxSum);
+        total += num;
+        currMin = Math.min(num, currMin + num);
+        minSum = Math.min(currMin, minSum);
+    }
+
+    if(maxSum > 0){
+        return Math.max(maxSum,total-minSum)
+    }else{
+        return maxSum
+    }
+};

@@ -1,0 +1,11 @@
+var rob = function (nums) {
+    let rob1 = 0
+    let rob2 = 0;
+    let decition;
+    for (let i = 0; i < nums.length; i++) {
+        decition = Math.max(rob1 + nums[i], rob2)
+        rob1 = rob2;
+        rob2 = decition
+    }
+    return rob2
+};

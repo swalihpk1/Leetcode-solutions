@@ -1,0 +1,20 @@
+var levelOrder = function (root) {
+    let res = [];
+    if (root == null) return res
+
+    let queue = [root]
+
+    while (queue.length > 0) {
+        let levelLength = queue.length
+        let currLevel = [];
+        for (let i = 0; i < levelLength; i++) {
+            let currentNode = queue.shift();
+            currLevel.push(currentNode.val)
+            if (currentNode.left) queue.push(currentNode.left)
+            if (currentNode.right) queue.push(currentNode.right)
+        }
+        res.push(currLevel)
+    }
+    return res
+
+};

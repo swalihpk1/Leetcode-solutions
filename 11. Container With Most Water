@@ -1,0 +1,11 @@
+var maxArea = function (height) {
+    let start = 0;
+    let end = height.length - 1;
+    let maxArea = 0;
+
+    while (start < end) {
+        maxArea = Math.max(maxArea, Math.min(height[start], height[end]) * (end - start));
+        height[start] < height[end] ? start++ : end--;
+    }
+    return maxArea;
+};

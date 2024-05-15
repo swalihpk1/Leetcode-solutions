@@ -1,0 +1,34 @@
+var printVertically = function (s) {
+    let result = [];
+    let words = s.split(" ");
+    let maxWordLength = getMaxLength(words);
+
+    for (let i = 0; i < maxWordLength; i++) {
+        let str = "";
+        for (let word of words) {
+            if (i >= word.length)
+                str += " ";
+            else
+                str += word.charAt(i);
+        }
+        result.push(trimLast(str));
+    }
+
+    return result;
+}
+
+function trimLast(word) {
+    let i = word.length - 1;
+    while (i >= 0 && word.charAt(i) === ' ') {
+        i--
+    }
+    return word.substring(0, i + 1);
+}
+
+function getMaxLength(words) {
+    let max = 0;
+    for (let word of words) {
+        max = max < word.length ? word.length : max;
+    }
+    return max;
+}

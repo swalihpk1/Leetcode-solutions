@@ -1,0 +1,26 @@
+var cloneGraph = function (node) {
+    let old_to_new = new Map();
+
+    function dfs(node) {
+        if (!node) {
+            return;
+        }
+        if (old_to_new.has(node)) {
+            return old_to_new.get(node);
+        }
+
+        let copy = new Node(node.val);
+        old_to_new.set(node,copy);
+
+
+        for (let nei of node.neighbors) {
+            let copy_nei = dfs(nei);
+            copy.neighbors.push(copy_nei)
+        }
+
+        return copy
+    }
+
+    return dfs(node)
+
+};

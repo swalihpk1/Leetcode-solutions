@@ -1,0 +1,16 @@
+var gcdOfStrings = function (str1, str2) {
+    let len1 = str1.length;
+    let len2 = str2.length;
+    let gcd = '';
+
+    for (let i = 1; i <= Math.min(len1, len2); i++) {
+        if (len1 % i === 0 && len2 % i === 0) {
+            let substr = str1.slice(0, i);
+            if (substr.repeat(len1 / i) === str1 && substr.repeat(len2 / i) === str2) {
+                gcd = substr;
+            }
+        }
+    }
+    return gcd;
+
+};

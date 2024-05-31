@@ -1,0 +1,22 @@
+var partitionLabels = function (s) {
+    let partitions = []
+
+    for (let i = 0; i < s.length;) {
+        let startIndex = i;
+         let endIndex = s.lastIndexOf(s.charAt(startIndex));
+
+        for (let j = startIndex + 1; j < endIndex; j++) {
+            let lastIdxOfnextChar = s.lastIndexOf(s.charAt(j));
+            if (lastIdxOfnextChar > endIndex) {
+                endIndex = lastIdxOfnextChar;
+            }
+        }
+
+        partitions.push(endIndex - startIndex + 1);
+        i = endIndex + 1;
+    }
+
+    return partitions
+    
+
+};

@@ -1,0 +1,17 @@
+var canJump = function(nums) {
+    const lastIndex = nums.length - 1;
+    let maxReach = 0;
+
+    for (let index = 0; index < nums.length; index++) {
+        if (index > maxReach) {
+            return false;
+        }
+        let value = nums[index];
+        maxReach = Math.max(maxReach, index + value);
+        if (maxReach >= lastIndex) {
+            return true;
+        }
+    }
+
+    return false;
+};

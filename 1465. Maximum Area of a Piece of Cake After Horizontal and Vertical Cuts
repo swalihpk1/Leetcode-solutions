@@ -1,0 +1,21 @@
+var maxArea = function (h, w, horizontalCuts, verticalCuts) {
+    horizontalCuts.sort((a, b) => a - b);
+    verticalCuts.sort((a, b) => a - b);
+
+
+    let H_length = horizontalCuts.length;
+    let V_length = verticalCuts.length;
+
+    let maxHeight = Math.max(horizontalCuts[0], h - horizontalCuts[H_length - 1])
+    let maxWidth = Math.max(verticalCuts[0], w - verticalCuts[V_length - 1])
+
+    for (let i = 1; i < H_length; i++) {
+        maxHeight = Math.max(maxHeight, horizontalCuts[i] - horizontalCuts[i - 1]);
+    }
+    for (let i = 1; i < V_length; i++) {
+        maxWidth = Math.max(maxWidth, verticalCuts[i] - verticalCuts[i - 1]);
+    }
+
+   return BigInt(maxHeight) * BigInt(maxWidth) % BigInt(1e9 + 7)
+
+};

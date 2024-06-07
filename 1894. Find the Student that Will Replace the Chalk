@@ -1,0 +1,13 @@
+var chalkReplacer = function (chalk, k) {
+    let totalChalk = chalk.reduce((acc, curr) => acc + curr, 0);
+
+    let rem = k % totalChalk;
+
+    for (let i = 0; i < chalk.length; i++) {
+        if (rem < chalk[i]) {
+            return i;
+        }
+        rem -= chalk[i];
+    }
+    return -1;
+};

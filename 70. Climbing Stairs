@@ -1,0 +1,11 @@
+var climbStairs = function (n) {
+    let a = 1, b = 1;
+    for (let i = n - 2; i >= 0; i--) {
+        let c = a + b;
+        a = b;
+        b = c
+    }
+
+    return b
+
+};

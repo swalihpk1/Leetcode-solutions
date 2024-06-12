@@ -1,0 +1,6 @@
+var plusOne = function (digits) {
+    digits = digits.join('')
+    digits =  BigInt(digits) + BigInt(1)
+    digits = digits.toString().split('')
+    return digits
+};

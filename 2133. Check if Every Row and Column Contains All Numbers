@@ -1,0 +1,26 @@
+var checkValid = function (matrix) {
+    let set;
+
+    for (let i = 0; i < matrix.length; i++) {
+        set = new Set();
+        for (let j = 0; j < matrix[0].length; j++) {
+            if (!set.has(matrix[i][j])) {
+                set.add(matrix[i][j]);
+            } else {
+                return false
+            }
+        }
+    }
+
+    for (let i = 0; i < matrix[0].length; i++) {
+        set = new Set();
+        for (let j = 0; j < matrix.length; j++) {
+            if (!set.has(matrix[j][i])) {
+                set.add(matrix[j][i]);
+            } else {
+                return false
+            }
+        }
+    }
+    return true
+}

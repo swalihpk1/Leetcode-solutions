@@ -1,0 +1,10 @@
+var areNumbersAscending = function(s) {
+    const numbers = (s.match(/\d+/g) || []).map(Number); 
+    if (numbers.length === 0) return true; 
+    for (let i = 1; i < numbers.length; i++) {
+        if (numbers[i] <= numbers[i - 1]) {
+            return false;
+        }
+    }
+    return true;
+};

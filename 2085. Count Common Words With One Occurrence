@@ -1,0 +1,14 @@
+var countWords = function (words1, words2) {
+    let map1 = {}, map2 = {};
+    let count = 0;
+    for (let char of words1) {
+        map1[char] = (map1[char] || 0) + 1;
+    }
+    for (let char of words2) {
+        map2[char] = (map2[char] || 0) + 1;
+    }
+    for (let char of words1) {
+        if (map1[char] === 1 && map2[char] === 1) count++;
+    }
+    return count
+};

@@ -1,0 +1,18 @@
+var digitCount = function (num) {
+    let arr = num.split('')
+    let count = 0;
+    for (let i = 0; i < arr.length; i++) {
+        count = 0
+        for (let j = 0; j < arr.length; j++) {
+            if (i  == arr[j]) {
+                count++;
+            }
+        }
+          if(count != arr[i]){
+            return false
+          }
+    }
+    return true;
+
+  
+};

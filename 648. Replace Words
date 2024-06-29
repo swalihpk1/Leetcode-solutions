@@ -1,0 +1,11 @@
+var replaceWords = function (dictionary, sentence) {
+    sentence = sentence.split(' ');
+    for (let i in sentence) {
+        for (let root of dictionary) {
+            if (sentence[i].startsWith(root)) {
+                sentence[i] = root;
+            }
+        }
+    }
+    return sentence.join(' ')
+};

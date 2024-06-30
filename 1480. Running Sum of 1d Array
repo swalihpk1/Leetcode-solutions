@@ -1,0 +1,10 @@
+var runningSum = function(nums) {
+    var s=0;
+
+    for(var i=0;i < nums.length; i++)
+    { 
+    s = s + nums[i];
+    nums[i] = s;
+    }
+    return nums
+};

@@ -1,0 +1,13 @@
+var subarraySum = function(nums, k) {
+    let count = 0;
+    let cumulativeSum = 0;
+    const sumFreq = { 0: 1 }; 
+
+    for (const num of nums) {
+        cumulativeSum += num;
+        count += sumFreq[cumulativeSum - k] || 0;
+        sumFreq[cumulativeSum] = (sumFreq[cumulativeSum] || 0) + 1;
+    }
+
+    return count;
+}

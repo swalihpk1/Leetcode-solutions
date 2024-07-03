@@ -1,0 +1,7 @@
+var subtractProductAndSum = function (n) {
+    n = "" + n
+    let pro = n.split('').reduce((acc, curr) => acc *= curr, 1);
+    let sum = n.split('').reduce((acc, curr) => acc +=Number(curr), 0);
+    return pro - sum
+
+};

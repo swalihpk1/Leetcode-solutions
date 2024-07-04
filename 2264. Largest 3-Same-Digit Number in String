@@ -1,0 +1,15 @@
+var largestGoodInteger = function(num) {
+    let output = "";
+
+    for (let i = 0; i < num.length - 2; i++) {
+        const sub = num.slice(i, i + 3);
+
+        if (sub[0] === sub[1] && sub[1] === sub[2]) {
+            if (sub > output) {
+                output = sub;
+            }
+        }
+    }
+
+    return output || "";
+};

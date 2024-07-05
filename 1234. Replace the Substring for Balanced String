@@ -1,0 +1,28 @@
+var balancedString = function (s) {
+    const l = s.length;
+    let start = 0, end = 0, res = l, need = 0;
+    const frequency = { 'Q': 0, 'W': 0, 'E': 0, 'R': 0 };
+    for (let i = 0; i < l; i++) {
+        frequency[s[i]]++;
+    }
+    for (let char in frequency) {
+        frequency[char] = frequency[char] - l / 4;
+        if (frequency[char] > 0) {
+            need++;
+        }
+    }
+    if (need === 0) return 0;
+
+    while (end < l) {
+        frequency[s[end]]--;
+        if (frequency[s[end]] === 0) need--;
+        while (need === 0) {
+            res = Math.min(res, end - start + 1);
+            frequency[s[start]]++;
+            if (frequency[s[start++]] > 0) need++;
+        }
+        end++;
+    }
+
+    return res;
+};

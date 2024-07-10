@@ -1,0 +1,17 @@
+var lengthOfLongestSubstring = function (s) {
+    let mpp = new Map();
+    let left = 0, right = 0;
+    let n = s.length;
+    let len = 0;
+
+    while (right < n) {
+        if (mpp.has(s.charAt(right))) {
+            left = Math.max(mpp.get(s.charAt(right)) + 1, left);
+        }
+        mpp.set(s.charAt(right), right);
+        len = Math.max(len, right - left + 1);
+        right++;
+    }
+
+    return len;
+};

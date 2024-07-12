@@ -1,0 +1,19 @@
+var minSubArrayLen = function(target, nums) {
+    let len = Infinity;
+    let sum = 0;
+    let i = 0, j = 0;
+
+    while (j < nums.length) {
+        sum += nums[j];
+        
+        while (sum >= target) {
+            len = Math.min(len, j - i + 1);
+            sum -= nums[i];
+            i++;
+        }
+
+        j++;
+    }
+
+    return len === Infinity ? 0 : len;
+};

@@ -1,0 +1,17 @@
+var findDuplicate = function (nums) {
+    let frequency = {};
+    for (let num of nums) {
+        if(num in frequency){
+            return num
+        }
+        frequency[num] = (frequency[num] || 0) + 1;
+    }
+    
+    nums = nums.sort();
+
+    for(let i = 0 ; i< nums.length;i++){
+        if(nums[i] === nums[i+1]){
+            return nums[i];
+        }
+    }
+};

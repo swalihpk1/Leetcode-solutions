@@ -1,0 +1,31 @@
+var threeSumClosest = function (nums, target) {
+    nums.sort((a, b) => a - b);
+    let diff = Number.MAX_SAFE_INTEGER;
+    let closestSum;
+
+    for (let i = 0; i < nums.length; i++) { 
+        let first = nums[i]; 
+        let start = i + 1;
+        let end = nums.length - 1;
+
+        while (start < end) {
+            let sum = first + nums[start] + nums[end];
+
+            if (sum === target) return target;
+
+            if (Math.abs(sum - target) < diff) {
+                diff = Math.abs(sum - target);
+                closestSum = sum;
+            }
+
+            if (sum < target) {
+                start++;
+            } else {
+                end--;
+            }
+        }
+    }
+
+    return closestSum;
+
+};

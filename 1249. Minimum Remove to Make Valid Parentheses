@@ -1,0 +1,29 @@
+var minRemoveToMakeValid = function (s) {
+    s = s.split('');
+    let count = 0;
+
+    for (let i = 0; i < s.length; i++) {
+        if (count <= 0 && s[i] === ')') {
+            s.splice(i, 1);
+            i--;
+        } else if (s[i] === '(') {
+            count++;
+        } else if (s[i] === ')') {
+            count--;
+        }
+    }
+
+
+    count = 0;
+    for (let i = s.length - 1; i >= 0; i--) {
+        if (count <= 0 && s[i] === '(') {
+            s.splice(i, 1);
+        } else if (s[i] === ')') {
+            count++;
+        } else if (s[i] === '(') {
+            count--;
+        }
+    }
+
+    return s.join('');
+};

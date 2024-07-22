@@ -1,0 +1,30 @@
+var findDuplicate = function (paths) {
+    let map = new Map();
+
+    for (let path of paths) {
+        let dir = path.split(" ");
+        let rootPath = dir[0];
+
+        for (let i = 1; i < dir.length; i++) {
+            let file = dir[i];
+            let contentStart = file.indexOf("(");
+            let contentEnd = file.indexOf(")");
+            let content = file.substring(contentStart + 1, contentEnd);
+            let filePath = rootPath + "/" + file.substring(0, contentStart);
+
+            if (!map.has(content)) {
+                map.set(content, []);
+            }
+            map.get(content).push(filePath);
+        }
+    }
+
+    let list = [];
+    for (let [content, filePaths] of map.entries()) {
+        if (filePaths.length > 1) {
+            list.push(filePaths);
+        }
+    }
+
+    return list;
+};

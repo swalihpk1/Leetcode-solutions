@@ -1,0 +1,18 @@
+var subsets = function (nums) {
+    let res = [], arr = [];
+    let n = nums.length
+    findSubset(0, arr, nums, res, n)
+    return res
+};
+
+function findSubset(i, arr, nums, res, n) {
+    if (i >= n) {
+        res.push([...arr]);
+        return
+    }
+    arr.push(nums[i]);
+    findSubset(i + 1, arr, nums, res, n)
+
+    arr.pop(nums[i]);
+    findSubset(i + 1, arr, nums, res, n)
+};

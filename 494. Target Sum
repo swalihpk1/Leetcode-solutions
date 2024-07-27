@@ -1,0 +1,16 @@
+var findTargetSumWays = function(nums, target) {
+      function calculateWays(i, currentSum, count) {
+        if (i === nums.length) {
+            if (currentSum === target) {
+                count.value++;
+            }
+            return;
+        }
+        calculateWays(i + 1, currentSum + nums[i], count);
+        calculateWays(i + 1, currentSum - nums[i], count);
+    }
+
+    let count = { value: 0 };
+    calculateWays(0, 0, count);
+    return count.value;
+};

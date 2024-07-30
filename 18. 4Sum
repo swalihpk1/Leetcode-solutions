@@ -1,0 +1,38 @@
+var fourSum = function (nums, target) {
+    let res = [];
+    if (nums == null || nums.length == 0) {
+        return res;
+    }
+    let n = nums.length
+
+    nums.sort((a, b) => a - b);
+
+    for (let i = 0; i < n; i++) {
+        if (i > 0 && nums[i] === nums[i - 1]) continue;
+        for (let j = i + 1; j < n; j++) {
+            if (j > i + 1 && nums[j] === nums[j - 1]) continue;
+
+
+            let target2 = target - nums[j] - nums[i]
+            let front = j + 1;
+            let back = n - 1;
+
+            while (front < back) {
+                let twoSum = nums[front] + nums[back]
+
+                if (twoSum < target2) {
+                    front++;
+                } else if (twoSum > target2) {
+                    back--;
+                } else {
+                    let quad = [nums[i], nums[j], nums[front], nums[back]];
+                    res.push(quad);
+                    while (front < back && nums[front] === quad[2]) ++front;
+
+                    while (front < back && nums[back] === quad[3]) --back;
+                }
+            }
+        }
+    };
+    return res
+}

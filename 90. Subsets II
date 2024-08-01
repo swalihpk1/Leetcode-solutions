@@ -1,0 +1,23 @@
+var subsetsWithDup = function (nums) {
+    nums.sort((a, b) => a - b); 
+    let res = [], arr = [];
+    let n = nums.length;
+
+    function findSubset(i, res, nums, arr, n) {
+        if (i >= n) {
+            res.push([...arr]);
+            return;
+        }
+        arr.push(nums[i]);
+        findSubset(i + 1, res, nums, arr, n);
+        arr.pop();
+        
+        while (i + 1 < n && nums[i] === nums[i + 1]) {
+            i++;
+        }
+        findSubset(i + 1, res, nums, arr, n);
+    }
+
+    findSubset(0, res, nums, arr, n);
+    return res;
+};

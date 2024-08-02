@@ -1,0 +1,11 @@
+var findNumbers = function (nums) {
+    let str = '';
+    let count = 0;
+    for (let num of nums) {
+        num = num.toString();
+        if (num.length % 2 === 0) {
+            count++;
+        }
+    }
+    return count
+};

@@ -1,0 +1,54 @@
+var LRUCache = function (capacity) {
+    this.capacity = capacity;
+    this.cache = new Map();
+    this.head = { prev: null, next: null };
+    this.tail = { prev: null, next: null };
+    this.head.next = this.tail;
+    this.tail.prev = this.head;
+};
+
+/** 
+ * @param {number} key
+ * @return {number}
+ */
+LRUCache.prototype.get = function (key) {
+    if (this.cache.has(key)) {
+        const node = this.cache.get(key);
+        this._remove(node);
+        this._add(node);
+        return node.value;
+    }
+    return -1;
+};
+
+/** 
+ * @param {number} key 
+ * @param {number} value
+ * @return {void}
+ */
+LRUCache.prototype.put = function (key, value) {
+    if (this.cache.has(key)) {
+        this._remove(this.cache.get(key));
+    }
+    const newNode = { key, value, prev: null, next: null };
+    this._add(newNode);
+    this.cache.set(key, newNode);
+
+    if (this.cache.size > this.capacity) {
+        const lru = this.head.next;
+        this._remove(lru);
+        this.cache.delete(lru.key);
+    }
+};
+
+LRUCache.prototype._remove = function (node) {
+    node.prev.next = node.next;
+    node.next.prev = node.prev;
+};
+
+LRUCache.prototype._add = function (node) {
+    node.prev = this.tail.prev;
+    node.next = this.tail;
+    this.tail.prev.next = node;
+    this.tail.prev = node;
+};

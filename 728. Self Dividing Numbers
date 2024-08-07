@@ -1,0 +1,18 @@
+var selfDividingNumbers = function (left, right) {
+    let res = [];
+    for (let num = left; num <= right; num++) {
+        let isSelfDividing = true;
+        let numStr = num.toString();
+        for (let i = 0; i < numStr.length; i++) {
+            let digit = parseInt(numStr[i]);
+            if (digit === 0 || num % digit !== 0) {
+                isSelfDividing = false;
+                break;
+            }
+        }
+        if (isSelfDividing) {
+            res.push(num);
+        }
+    }
+    return res;
+};

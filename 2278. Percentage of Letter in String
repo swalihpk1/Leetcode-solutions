@@ -1,0 +1,13 @@
+var percentageLetter = function(s, letter) {
+    let count=0;
+    for(let i of s) {
+        if(i==letter){
+            count++;
+        }
+    }
+    if(count==0){
+    return 0
+    }
+    
+ return  Math.floor((count/s.length ) * 100);
+};
